@@ -6,6 +6,9 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const userLogRouter = require('./routes/userLog');
+const addressRouter = require('./routes/addresses');
+const skillsRouter = require('./routes/skills');
 const panelRouter = require('./routes/controlPanel');
 const productbacklogRouter = require('./routes/productBacklogs');
 const releasebacklogRouter = require("./routes/releaseBacklogs");
@@ -27,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/userLogs', userLogRouter);
+app.use('/addresses', addressRouter);
+app.use('/skills', skillsRouter);
 app.use('/controlPanel', panelRouter);
 app.use('/prodcutBacklogs', productbacklogRouter);
 app.use("/releaseBacklogs", releasebacklogRouter);
