@@ -13,7 +13,7 @@ function index(req, res, next) {
 }
 
 function replace(req, res, next) {
-  res.send("Product backlog remplazado");
+  res.send("Product backlog reemplazado");
 }
 
 function update(req, res, next) {

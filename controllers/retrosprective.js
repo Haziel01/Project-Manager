@@ -13,7 +13,7 @@ function index(req, res, next) {
 }
 
 function replace(req, res, next) {
-  res.send("Retrospectiva remplazada");
+  res.send("Retrospectiva reemplazada");
 }
 
 function update(req, res, next) {

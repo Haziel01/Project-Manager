@@ -1,27 +1,27 @@
 const express = require('express');
 
 function create(req, res, next) {
-    res.send('Product backlog creado');
+    res.send('Historia creada');
 }
 
 function list(req, res, next) {
-    res.send('Litado de product backlog');
+    res.send('Litado de historias creada');
 }
 
 function index(req, res, next) {
-  res.send("Product backlog index");
+  res.send("Historia index");
 }
 
 function replace(req, res, next) {
-  res.send("Product backlog reemplazado");
+  res.send("Historia reemplazada");
 }
 
 function update(req, res, next) {
-  res.send("Product backlog actualizado");
+  res.send("Historia actualizada");
 }
 
 function destroy(req, res, next) {
-  res.send("Product backlog eliminado");
+  res.send("Historia eliminada");
 }
 
 module.exports = {

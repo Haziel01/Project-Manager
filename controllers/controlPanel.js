@@ -1,27 +1,27 @@
 const express = require('express');
 
 function create(req, res, next) {
-    res.send('Product backlog creado');
+    res.send('Panel de control creado');
 }
 
 function list(req, res, next) {
-    res.send('Litado de product backlog');
+    res.send('Litado de Panel de control');
 }
 
 function index(req, res, next) {
-  res.send("Product backlog index");
+  res.send("Panel de control index");
 }
 
 function replace(req, res, next) {
-  res.send("Product backlog reemplazado");
+  res.send("Panel de control reemplazado");
 }
 
 function update(req, res, next) {
-  res.send("Product backlog actualizado");
+  res.send("Panel de control actualizado");
 }
 
 function destroy(req, res, next) {
-  res.send("Product backlog eliminado");
+  res.send("Panel de control eliminado");
 }
 
 module.exports = {
