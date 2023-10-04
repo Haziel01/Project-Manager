@@ -8,3 +8,5 @@ Integrantes:
 - Miguel Omar Burillo Aguirre
 - Brandon Haziel Ceballos Buenrostro
 - Valeria Martinez Garibay
+
+![Diagrama de Interaccion](https://gitlab.com/a338823/package_manager1/-/raw/main/diagrama_secuencia.jpg)
