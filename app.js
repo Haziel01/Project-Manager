@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //declaración de rutas
 
 app.use('/', indexRouter);
-app.use('/teamMembers', teamMemberRouter);
+app.use('/teamMember', teamMemberRouter);
 app.use('/backlogs',backlogsRouter);
 app.use('/boards',boardsRouter);
 app.use('/columns',columnsRouter);
