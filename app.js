@@ -1,13 +1,34 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require("mongoose");
+const config = require('config');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const teamMemberRouter = require('./routes/teamMember');
+const boardsRouter = require('./routes/boards');
+const columnsRouter = require('./routes/columns');
+const proyectRecordRouter = require('./routes/proyectRecords');
+const userHistoryRouter = require('./routes/userHistory');
+const backlogsRouter = require('./routes/backlogs');
 
-var app = express();
+//jwt
+const jwtKey = config.get('secret.key')
+//conection to database
+const uri = config.get('dbChain');
+mongoose.connect(uri);
+const db = mongoose.connection;
+
+const app = express();
+
+db.on('open',()=>{
+  console.log("Conexion ok");
+})
+db.on('error',()=>{
+  console.log("Conexion error");
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +40,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//protecion de rutas
+//app.use(expressjwt({secret:jwtKey,algorithms:['HS256']}))
+   //.unless({path:["/"]})
+//declaración de rutas
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/teamMembers', teamMemberRouter);
+app.use('/backlogs',backlogsRouter);
+app.use('/boards',boardsRouter);
+app.use('/columns',columnsRouter);
+app.use('/proyectRecords',proyectRecordRouter);
+app.use('/userHistory',userHistoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

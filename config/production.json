@@ -1,0 +1,5 @@
+{
+    "secret":{
+        "key":"728d55874e481575e80106773d4e6adk"
+    },"doChain":"mongodb+srv://hazielcb:EUr9gEk1E2XUv7qd@cluster0.jpawnyu.mongodb.net/?retryWrites=true&w=majority"
+}

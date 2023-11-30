@@ -1,0 +1,5 @@
+{
+    "secret":{
+        "key":"728d55874e481575e80106773d4e6adb"
+    },"doChain":"mongodb+srv://a338940:sdf54g5g@cluster0.jd1alc6.mongodb.net/?retryWrites=true&W=majority"
+}
