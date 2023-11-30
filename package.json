@@ -5,7 +5,7 @@
   "scripts": {
     "start": "export NODE_ENV=production; node ./bin/www",
     "dev": "supervisor ./bin/www",
-    "test": "./node_modules/.bin/jest"
+    "test": "jest"
   },
   "dependencies": {
     "@casl/mongoose": "^7.2.1",
