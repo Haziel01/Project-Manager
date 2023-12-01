@@ -9,10 +9,10 @@ function list(req, res, next) {
     };
     UserHistory.paginate({}, options).then((objs) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('user.list'),
         obj: objs,
       })).catch((ex) => res.status(500).json({
-        message: "error",
+        message: res.__('user.noInfo'),
         obj: ex,
       }));
 }
@@ -21,10 +21,10 @@ function index(req, res, next) {
   const id = req.params.id;
   UserHistory.findOne({ id: id }).then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.found'),
         obj: obj,
       })).catch((ex) => res.status(500).json({
-        message: "error",
+        message: res.__('History.noFound'),
         obj: ex,
       }));
 }
@@ -57,10 +57,10 @@ function create(req, res, next) {
   userHistory
     .save().then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.create'),
         obj: obj,
       })).catch((ex) => res.status(500).json({
-        message: "error",
+        message: res.__('History.notcreate'),
         obj: ex,
       }));
 }
@@ -94,10 +94,10 @@ function replace(req, res, next) {
   UserHistory.findOneAndUpdate({ _id: id }, userHistory, { new: true })
     .then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.replaced'),
         obj: obj,
       })).catch((ex) => res.status(500).json({
-        message: "error",
+        message: res.__('History.noReplaced'),
         obj: ex,
       }));
 }
@@ -130,10 +130,10 @@ function update(req, res, next) {
   UserHistory.findOneAndUpdate({ _id: id }, userHistory, { new: true })
     .then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.relpaced'),
         obj: obj,
       })).catch((ex) => res.status(500).json({
-        message: "error",
+        message: res.__('History.noReplaced'),
         obj: ex,
       }));
 }
@@ -143,10 +143,10 @@ function destroy(req, res, next) {
   UserHistory.findByIdAndRemove({ _id: id })
     .then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.deleted'),
         obj: obj,
       })).catch((ex) => res.status(500).json({
-        message: "error",
+        message: res.__('History.noDeleted'),
         obj: ex,
       }));
 }

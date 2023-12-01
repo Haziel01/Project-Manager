@@ -100,11 +100,11 @@ function update(req, res, next) {
 
   Column.findOneAndUpdate({ _id: id }, column).then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('Column.updated'),
         obj: obj,
       })).catch((ex) =>
       res.status(500).json({
-        message: "error",
+        message: res.__('Column.noUpdated'),
         obj: ex,
       }));
 }
@@ -113,11 +113,11 @@ function destroy(req, res, next) {
   const id = req.params.id;
   Column.findByIdAndRemove({ _id: id }).then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('Column.noDeleted'),
         obj: obj,
       })).catch((ex) =>
       res.status(500).json({
-        message: "error",
+        message: res.__('Column.noDeleted'),
         obj: ex,
       }));
 }
@@ -132,11 +132,11 @@ async function addHistories(req, res, next) {
   column
     .save().then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.added'),
         obj: obj,
       })).catch((ex) =>
       res.status(500).json({
-        message: "error",
+        message: res.__('History.noAdded'),
         obj: ex,
       }));
 }
@@ -156,12 +156,12 @@ async function deleteHistory(req, res, next) {
     column.histories.splice(index, 1);
     column.save().then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.deleted'),
         obj: obj,
       })
     );
     } catch {(err) => res.status(500).json({
-        message: "ok",
+        message: res._('History.noDeleted'),
         obj: err,
       });
   }
@@ -169,11 +169,11 @@ async function deleteHistory(req, res, next) {
   column
     .save().then((obj) =>
       res.status(200).json({
-        message: "ok",
+        message: res.__('History.deleted'),
         obj: obj,
       })).catch((ex) =>
       res.status(500).json({
-        message: "error",
+        message: res.__('History.noDeleted'),
         obj: ex,
       }));
 }
