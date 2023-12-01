@@ -4,7 +4,7 @@
 
 1) Los componentes de seguridad (JWT y almacenamiento seguro de datos), manejo de ambientes, matriz RBAC, internacionalización y localización.
 
-2) Las pruebas usando JEST y Super Test para cada ruta de su proyecto (Respetar la regla del 50%).
+2) Las pruebas usando JEST y Super Test para cada ruta de su proyecto.
 
 3) Comunicar la aplicación con el PaaS de Mongodb Atlas.
 
