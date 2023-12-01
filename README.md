@@ -10,6 +10,9 @@
 
 # Integrantes:
 Aldo Fabián Martínez Meza
+
 Miguel Omar Burillo Aguirre
+
 Brandon Haziel Ceballos Buenrostro
+
 Valeria Martínez Garibay
