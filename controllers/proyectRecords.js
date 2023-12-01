@@ -10,10 +10,10 @@ let page = req.params.page? req.params.page: 1;
   };
   Project.paginate({},options).populate("_projectManager _productOwner _developmentTeam")
     .then(objs => res.status(200).json({
-        message: "ok",
+        message: res.__('Project.list'),
         obj: objs
     })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Project.noInfo'),
         obj: ex
     }));
 }
@@ -22,10 +22,10 @@ function index(req, res, next) {
     const id = req.params.id;
     Project.findOne({"_id":id}).populate("_projectManager _productOwner _developmentTeam")
     .then(obj => res.status(200).json({
-        message: "ok",
+        message: res.__('Project.found'),
         obj: obj
     })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Project.noFound'),
         obj:ex
     }));
 }
@@ -59,10 +59,10 @@ async function create(req, res, next) {
 
 
     project.save().then(obj => res.status(200).json({
-        message: "ok",
+        message: res.__('Project.created'),
         obj:obj
     })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Project.noCreated'),
         ex:ex
     }));
 }
@@ -89,10 +89,10 @@ function replace(req, res, next) {
   
     Project.findOneAndUpdate({ _id: id }, project, { new: true })
       .then(obj => res.status(200).json({
-        message: "ok",
+        message: res.__('Project.replaced'),
         obj: obj
       })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Project.noReplaced'),
         obj: ex
       }));
   }
@@ -126,10 +126,10 @@ function replace(req, res, next) {
   
     Project.findOneAndUpdate({ _id: id }, project, { new: true })
       .then(obj => res.status(200).json({
-        message: "ok",
+        message: res.__('Project.updated'),
         obj: obj
       })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Project.noUpdated'),
         obj: ex
       }));
 }
@@ -138,10 +138,10 @@ function destroy(req, res, next) {
     const id = req.params.id;
     Project.findByIdAndRemove({"_id":id})
             .then(obj => res.status(200).json({
-                message: "ok",
+                message: res.__('Project.deleted'),
                 obj:obj
             })).catch(ex => res.status(500).json({
-                message: "error",
+                message: res.__('Project.noDeleted'),
                 obj:ex
             }));
 }

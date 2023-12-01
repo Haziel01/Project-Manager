@@ -5,20 +5,20 @@ const TeamMember = require('../models/teamMember');
 
 function list(req,res,next){
   TeamMember.find().then(objs => res.status(200).json({
-        message: "ok",
+        message: res.__('Members.list'),
         obj:objs
     })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Members.noInfo'),
         obj:ex
     }))
 }
 
 function index(req,res,next){
     TeamMember.findOne({"_id":id}).then(objs => res.status(200).json({
-        message: "ok",
+        message: res.__('Member.found'),
         obj:objs
     })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('Members.nofound'),
         obj:ex
     }))
 }
@@ -54,10 +54,10 @@ async function create(req, res, next) {
     console.log(teamMember);
     
     teamMember.save().then(objs => res.status(200).json({
-        message: "ok",
+        message: res.__('user.create'),
         obj:objs
     })).catch(ex => res.status(500).json({
-        message: "error",
+        message: res.__('user.notcreate'),
         obj:ex
     }));
 }
@@ -70,13 +70,13 @@ async function update(req, res, next) {
         const user = await TeamMember.findById(userId);
         if(!user){
             return res.status(400).json({
-                message:"error"
+                message: res.__('user.notfound')
             });
         }
         const isMatch = await bcrypt.compare(currerntPassword,user.password);
         if(!isMatch){
             return res.status(400).json({
-                message:"error"
+                message: res.__('user.incorrectpass')
             })
 
         }
@@ -84,11 +84,11 @@ async function update(req, res, next) {
         const newPasswordHash = await bcrypt.hash(newPassword,salt);
         await TeamMember.updateOne({"_id":userId},{password:newPasswordHash,salt:salt})
         res.status(200).json({
-            message: "ok"
+            message: res.__('user.update')
         })
     }catch( err ){
         res.status(500).json({
-            message: "error",
+            message: res.__('user.notupdate'),
             ex:err
         });
     }
@@ -100,16 +100,16 @@ async function destroy(req, res, next) {
         const result = await TeamMember.deleteOne({_id: userId});
         if (result.deletedCount === 1) {
             res.status(200).json({
-                message: "ok"
+                message: res.__('user.delete')
             });
         } else {
             res.status(404).json({
-                message: "error"
+                message: res.__('user.notfound')
             });
         }
     } catch (error) {
         res.status(500).json({
-            message: "error",
+            message: res.__('user.notdeleted'),
             obj: error
         });
     }
