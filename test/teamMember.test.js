@@ -1,11 +1,15 @@
 const request = require('supertest');
-
 const app = require('../app');
 
-it('Responde con json cointaining', done =>{
+process.env.NODE_ENV = 'test';
+
+const config = require('config');
+config.util.getConfigSources(); 
+
+it('Responde con json cointaining', done => {
     request(app)
-    .get('/teamMember')
+        .get('/teamMember')
         .set('Accept', 'application/json')
-        .expect('Content-Type',/json/)
+        .expect('Content-Type', /json/)
         .expect(200, done);
 });

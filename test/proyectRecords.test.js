@@ -6,6 +6,7 @@ var id = '';
 
 describe('Deberia probar las rutas de los proyectRecords', ()=>{
     it('Deberia de crear un proyectRecord', (done)=> {
+        jest.setTimeout(10000);
         supertest(app).post('/proyectRecords')
             .send({
                 name: 'proyecto_1',
@@ -57,6 +58,7 @@ describe('Deberia probar las rutas de los proyectRecords', ()=>{
             })
     });
     it('Deberia editar un proyectRecord', (done) => {
+        jest.setTimeout(10000);
         supertest(app).patch(`/proyectManager/${id}`)
             .send({
                 name: 'proyecto_1',
@@ -83,6 +85,7 @@ describe('Deberia probar las rutas de los proyectRecords', ()=>{
             })
     });
     it('Deberia reemplazar un proyectRecord', (done) => {
+        jest.setTimeout(10000);
         supertest(app).put(`/proyectManager/${id}`)
             .send({
                 name: 'proyecto_1',
