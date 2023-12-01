@@ -4,7 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
+const { expressjwt } = require("express-jwt");
 const config = require('config');
+const i18n = require("i18n");
 
 const indexRouter = require('./routes/index');
 const teamMemberRouter = require('./routes/teamMember');
@@ -30,6 +32,12 @@ db.on('error',()=>{
   console.log("Conexion error");
 })
 
+i18n.configure({
+  locales: ["es", "en"],
+  directory: `${__dirname}/locales`,
+  cookie: "lenguage",
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -41,9 +49,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //protecion de rutas
-//app.use(expressjwt({secret:jwtKey,algorithms:['HS256']}))
-   //.unless({path:["/"]})
-//declaración de rutas
+// app.use(expressjwt({secret: jwtKey, algorithms: ['HS256']})
+//   .unless({path: ['/login']}));
 
 app.use('/', indexRouter);
 app.use('/teamMember', teamMemberRouter);
